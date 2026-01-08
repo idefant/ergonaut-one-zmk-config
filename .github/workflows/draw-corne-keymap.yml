@@ -1,4 +1,4 @@
-name: Draw ZMK keymaps
+name: Draw ZMK Corne keymap
 
 on:
   workflow_dispatch:

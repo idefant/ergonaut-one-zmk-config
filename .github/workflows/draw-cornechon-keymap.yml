@@ -1,4 +1,4 @@
-name: Draw ZMK keymaps
+name: Draw ZMK Cornechon keymap
 
 on:
   workflow_dispatch:
