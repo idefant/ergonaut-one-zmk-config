@@ -38,8 +38,8 @@ layers:
   - /
   - ']'
   - NUM
-  - NAV
   - {t: ␣, s: (CA) NB}
+  - NAV
   - Shift
   - SYM
   - FUNC
@@ -124,8 +124,8 @@ layers:
   - Next Tab
   - Menu
   - {t: ▽, type: trans}
-  - {type: held}
   - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -298,8 +298,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Left Click
   - Right Click
+  - Left Click
   - Middle Click
   BT:
   - Boot
