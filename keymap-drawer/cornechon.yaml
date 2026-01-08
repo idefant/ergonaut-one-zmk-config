@@ -1,0 +1,353 @@
+layout: {zmk_keyboard: cornechon}
+layers:
+  BASE:
+  - Esc
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - '['
+  - ↹
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - ''''
+  - {t: Caps Word, s: Caps Lock}
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - ']'
+  - NUM
+  - NAV
+  - {t: ␣, s: (CA) NB}
+  - Shift
+  - SYM
+  - FUNC
+  COLEMAK:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: F, s: E}
+  - {t: P, s: R}
+  - {t: B, s: T}
+  - {t: J, s: Y}
+  - {t: L, s: U}
+  - {t: U, s: I}
+  - {t: Y, s: O}
+  - {t: ;, s: P}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: R, s: S}
+  - {t: S, s: D}
+  - {t: T, s: F}
+  - {t: ▽, type: trans}
+  - {t: M, s: H}
+  - {t: N, s: J}
+  - {t: E, s: K}
+  - {t: I, s: L}
+  - {t: O, s: ;}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: D, s: V}
+  - {t: V, s: B}
+  - {t: K, s: N}
+  - {t: H, s: M}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NAV:
+  - MOUSE
+  - RU JCUKEN
+  - {t: EN QWERTY, s: EN COLEMAK}
+  - Desk Left
+  - Desk Right
+  - Swapper
+  - Task View
+  - Home
+  - ↑
+  - End
+  - Page Up
+  - First Line
+  - Tabber
+  - Gui
+  - Alt
+  - Ctrl
+  - Shift
+  - ⏎
+  - ⏎
+  - ←
+  - ↓
+  - →
+  - Page Down
+  - Last Line
+  - Redo
+  - Undo
+  - Cut
+  - Copy
+  - Paste
+  - Clip board
+  - Show Desk
+  - ⌫
+  - ⌦
+  - Prev Tab
+  - Next Tab
+  - Menu
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NUM:
+  - ALT \
+  - ALT /
+  - '*'
+  - '-'
+  - +
+  - {t: 'ALT #', s: (S) №}
+  - ''
+  - '7'
+  - '8'
+  - '9'
+  - ''
+  - ''
+  - '%'
+  - Gui
+  - Alt
+  - Ctrl
+  - Shift
+  - F
+  - ''
+  - '4'
+  - '5'
+  - '6'
+  - KP .
+  - ''
+  - ALT ^
+  - A
+  - B
+  - C
+  - D
+  - E
+  - ''
+  - '1'
+  - '2'
+  - '3'
+  - '0'
+  - ''
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  SYM:
+  - ALT \
+  - ALT /
+  - '*'
+  - {t: '-', s: (S) NB}
+  - +
+  - {t: 'ALT #', s: (S) №}
+  - ALT "
+  - 'ALT :'
+  - ALT ;
+  - _
+  - ALT ?
+  - ALT ~
+  - '%'
+  - ALT <
+  - ALT {
+  - ALT [
+  - (
+  - {t: ALT $, s: (S) ₽}
+  - ALT '
+  - Shift
+  - Ctrl
+  - Alt
+  - Gui
+  - ALT &
+  - ALT ^
+  - ALT >
+  - ALT }
+  - ALT ]
+  - )
+  - ALT @
+  - ALT `
+  - ALT .
+  - ALT ,
+  - '='
+  - '!'
+  - ALT |
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - {t: ▽, type: trans}
+  FUNC:
+  - ''
+  - F1
+  - F2
+  - F3
+  - F4
+  - Zoom In
+  - Bright Up
+  - ''
+  - ''
+  - ''
+  - ''
+  - Win Close
+  - ''
+  - F5
+  - F6
+  - F7
+  - F8
+  - Zoom Out
+  - Bright Down
+  - Shift
+  - Ctrl
+  - Alt
+  - Gui
+  - ''
+  - ''
+  - F9
+  - F10
+  - F11
+  - F12
+  - Zoom Default
+  - MUTE
+  - Vol Down
+  - Vol Up
+  - Snipping Tool
+  - Print Screen
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  MOUSE:
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - H.Scroll Mouse Mode
+  - V.Scroll Mouse Mode
+  - ''
+  - ''
+  - Scroll ←
+  - Mouse ↑
+  - Scroll →
+  - Scroll ↑
+  - ''
+  - ''
+  - Gui
+  - Alt
+  - Ctrl
+  - Shift
+  - ''
+  - ''
+  - Mouse ←
+  - Mouse ↓
+  - Mouse →
+  - Scroll ↓
+  - ''
+  - ''
+  - ''
+  - ''
+  - Slow Mouse Mode
+  - Fast Mouse Mode
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Left Click
+  - Right Click
+  - Middle Click
+  BT:
+  - Boot
+  - ''
+  - ''
+  - Out USB
+  - Out BLE
+  - ''
+  - ''
+  - Out BLE
+  - Out USB
+  - ''
+  - ''
+  - Boot
+  - BT Clear
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - BT 5
+  - BT 4
+  - BT 3
+  - BT 2
+  - BT 1
+  - BT Clear
+  - Reset
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Reset
+  - {type: held}
+  - {type: held}
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+combos:
+- p: [36, 37, 38]
+  k: BT
+  a: bottom
+- p: [39, 40, 41]
+  k: BT
+  a: bottom
