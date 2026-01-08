@@ -1,0 +1,24 @@
+name: Draw ZMK keymaps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "config/cornechon.keymap"
+      - "config/*.dtsi"
+      - "config/**/*.dtsi"
+      - "keymap-drawer/config.yaml"
+
+jobs:
+  draw:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@v0.22.1
+    permissions:
+      contents: write  # allow workflow to commit generated files back to the repo
+    with:
+      # Only draw the main keymap (avoid duplicating the same diagram for dongle keymaps)
+      keymap_patterns: "config/cornechon.keymap"
+      config_path: "keymap-drawer/config.yaml"
+      output_folder: "keymap-drawer"
+      draw_args: "cornechon:'-j config/cornechon.json'"
+      # Fetch extra west modules (e.g. zmk-tri-state) before parsing
+      west_config_path: "config"

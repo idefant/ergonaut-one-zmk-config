@@ -1,0 +1,333 @@
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 600  // 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20   // 10
+
+#include <behaviors/mouse_keys.dtsi>
+#include <dt-bindings/zmk/mouse.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <behaviors/caps_word_ru.dtsi>
+
+#define COLEMAK_MM(name, X, Y) \
+name: name { \
+  compatible = "zmk,behavior-mod-morph"; \
+  #binding-cells = <0>; \
+  bindings = <&kp X>, <&kp Y>; \
+  mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>; \
+  keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>; \
+};
+
+#define L_BASE    0
+#define L_COLEMAK 1
+#define L_NAV     2
+#define L_NUM     3
+#define L_SYM     4
+#define L_FUNC    5
+#define L_MOUSE   6
+#define L_BT      7
+
+&lt { quick-tap-ms = <200>; };
+
+&mt { quick-tap-ms = <200>; };
+
+&mmv {
+    acceleration-exponent = <1>;  // 1
+    time-to-max-speed-ms = <0>;   // 0
+    delay-ms = <0>;
+    trigger-period-ms = <8>;      // 16
+};
+
+&msc {
+    acceleration-exponent = <1>;  // 1
+    time-to-max-speed-ms = <0>;   // 0
+    delay-ms = <0>;
+    trigger-period-ms = <8>;      // 16
+};
+
+/ {
+    conditional_layers { compatible = "zmk,conditional-layers"; };
+
+    macros {
+        to_rus: to_rus {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LC(N2)) &tog_off L_COLEMAK>;
+            label = "TO_RUSSIAN";
+        };
+
+        to_qwerty: to_qwerty {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LC(N1)) &tog_off L_COLEMAK>;
+            label = "TO_QWERTY";
+        };
+
+        to_colemak: to_colemak {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LC(N1)) &tog_on L_COLEMAK>;
+            label = "TO_COLEMAK";
+        };
+
+        // F13
+        slow_mouse_mode: slow_mouse_mode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms  = <0>;
+            bindings
+                = <&macro_tap &kt_off F14 &kt_off F15 &kt_off F16 &kt_on F13>;
+        };
+
+        // F14
+        fast_mouse_mode: fast_mouse_mode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms  = <0>;
+            bindings
+                = <&macro_tap &kt_off F13 &kt_off F15 &kt_off F16 &kt_on F14>;
+        };
+
+        // F15
+        hscroll_mouse_mode: hscroll_mouse_mode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms  = <0>;
+            bindings
+                = <&macro_tap &kt_off F13 &kt_off F14 &kt_on F15>;
+        };
+
+        // F16
+        vscroll_mouse_mode: vscroll_mouse_mode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms  = <0>;
+            bindings
+                = <&macro_tap &kt_off F13 &kt_off F14 &kt_on F16>;
+        };
+
+        mouse_mode_reset: mouse_mode_reset {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms  = <0>;
+            bindings = <&macro_tap
+                &kt_off F13 &kt_off F14 &kt_off F15 &kt_off F16
+            >;
+        };
+
+        mouse_layer_off: mouse_layer_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms  = <0>;
+            bindings = <&macro_tap &mouse_mode_reset &tog_off L_MOUSE>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        bt_left_combo {
+            bindings = <&mo L_BT>;
+            key-positions = <36 37 38>;
+        };
+
+        bt_right_combo {
+            bindings = <&mo L_BT>;
+            key-positions = <39 40 41>;
+        };
+    };
+
+    behaviors {
+        swapper: swapper {
+            compatible = "zmk,behavior-tri-state";
+            label = "SWAPPER";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+
+            ignored-key-positions = <8 19 20 21 39>;
+        };
+
+        tabber: tabber {
+            compatible = "zmk,behavior-tri-state";
+            label = "TABBER";
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+
+            ignored-key-positions = <8 16 19 20 21 39>;
+        };
+
+        mouse_layer: mouse_layer {
+            compatible = "zmk,behavior-tri-state";
+            label = "MOUSE_LAYER";
+            #binding-cells = <0>;
+            bindings = <&tog_on L_MOUSE>, <&mouse_mode_reset>, <&mouse_layer_off>;
+
+            ignored-layers = <L_MOUSE>;
+            ignored-key-positions = <3 4 7 8 9 10 13 14 15 16 19 20 21 22 27 28 39 40 41>;
+        };
+
+        alt_space: alt_space {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE>, <&kp RA(SPACE)>;
+
+            mods = <(MOD_LALT|MOD_LCTL)>;
+            label = "ALT_SPACE";
+        };
+
+        alt_dash: alt_dash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp RA(MINUS)>;
+
+            mods = <(MOD_LSFT)>;
+            label = "ALT_DASH";
+        };
+
+        caps: caps {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CAPS";
+            bindings = <&caps_word_ru>, <&kp CAPS>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        kt_on: key_toggle_on_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            toggle-mode = "on";
+        };
+
+        kt_off: key_toggle_off_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            toggle-mode = "off";
+        };
+
+        tog_on: layer_toggle_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            toggle-mode = "on";
+        };
+
+        tog_off: layer_toggle_off_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            toggle-mode = "off";
+        };
+
+        // Colemak Mod-DH
+        to_eng: to_eng {
+            compatible = "zmk,behavior-mod-morph";
+            bindings = <&to_qwerty>, <&to_colemak>;
+
+            #binding-cells = <0>;
+            mods = <MOD_LSFT>;
+        };
+
+        COLEMAK_MM(colemak_f, F, E)
+        COLEMAK_MM(colemak_p, P, R)
+        COLEMAK_MM(colemak_b, B, T)
+        COLEMAK_MM(colemak_r, R, S)
+        COLEMAK_MM(colemak_s, S, D)
+        COLEMAK_MM(colemak_t, T, F)
+        COLEMAK_MM(colemak_d, D, V)
+        COLEMAK_MM(colemak_v, V, B)
+        COLEMAK_MM(colemak_j, J, Y)
+        COLEMAK_MM(colemak_l, L, U)
+        COLEMAK_MM(colemak_u, U, I)
+        COLEMAK_MM(colemak_y, Y, O)
+        COLEMAK_MM(colemak_semi, SEMI, P)
+        COLEMAK_MM(colemak_m, M, H)
+        COLEMAK_MM(colemak_n, N, J)
+        COLEMAK_MM(colemak_e, E, K)
+        COLEMAK_MM(colemak_i, I, L)
+        COLEMAK_MM(colemak_o, O, SEMI)
+        COLEMAK_MM(colemak_k, K, N)
+        COLEMAK_MM(colemak_h, H, M)
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        BASE {
+            bindings = <
+&kp ESC  &kp Q  &kp W  &kp E      &kp R      &kp T       &kp Y      &kp U      &kp I       &kp O    &kp P     &kp LBKT
+&kp TAB  &kp A  &kp S  &kp D      &kp F      &kp G       &kp H      &kp J      &kp K       &kp L    &kp SEMI  &kp SQT
+&caps    &kp Z  &kp X  &kp C      &kp V      &kp B       &kp N      &kp M      &kp COMMA   &kp DOT  &kp FSLH  &kp RBKT
+                       &mo L_NUM  &mo L_NAV  &alt_space  &kp LSHFT  &mo L_SYM  &mo L_FUNC
+            >;
+        };
+
+        COLEMAK {
+            bindings = <
+&trans  &trans  &trans      &colemak_f  &colemak_p  &colemak_b  &colemak_j  &colemak_l  &colemak_u  &colemak_y  &colemak_semi  &trans
+&trans  &trans  &colemak_r  &colemak_s  &colemak_t  &trans      &colemak_m  &colemak_n  &colemak_e  &colemak_i  &colemak_o    &trans
+&trans  &trans  &trans      &trans      &colemak_d  &colemak_v  &colemak_k  &colemak_h  &trans      &trans      &trans        &trans
+                            &trans      &trans      &trans      &trans      &trans      &trans
+            >;
+        };
+
+        NAV {
+            bindings = <
+&mouse_layer  &to_rus    &to_eng    &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &swapper   &kp LG(TAB)  &kp HOME  &kp UP    &kp END        &kp PG_UP      &kp LC(HOME)
+&tabber       &kp LGUI   &kp LALT   &kp LCTRL         &kp LSHFT          &kp RET    &kp RET      &kp LEFT  &kp DOWN  &kp RIGHT      &kp PG_DN      &kp LC(END)
+&kp LC(Y)     &kp LC(Z)  &kp LC(X)  &kp LC(C)         &kp LC(V)          &kp LG(V)  &kp LG(D)    &kp BSPC  &kp DEL   &kp LC(PG_UP)  &kp LC(PG_DN)  &kp K_APP
+                                    &trans            &trans             &trans     &trans       &trans    &trans
+            >;
+        };
+
+        NUM {
+            bindings = <
+&kp RA(BACKSLASH)  &kp RA(SLASH)  &kp ASTRK  &kp MINUS  &kp PLUS   &kp RA(N3)  &none   &kp N7  &kp N8  &kp N9  &none       &none
+&kp PERCENT        &kp LGUI       &kp LALT   &kp LCTRL  &kp LSHFT  &kp F       &none   &kp N4  &kp N5  &kp N6  &kp KP_DOT  &none
+&kp RA(N6)         &kp A          &kp B      &kp C      &kp D      &kp E       &none   &kp N1  &kp N2  &kp N3  &kp N0      &none
+                                             &trans     &trans     &trans      &trans  &trans  &trans
+            >;
+        };
+
+        SYM {
+            bindings = <
+&kp RA(BACKSLASH)  &kp RA(SLASH)         &kp ASTRK            &alt_dash              &kp PLUS  &kp RA(N3)  &kp RA(DOUBLE_QUOTES)  &kp RA(COLON)  &kp RA(SEMICOLON)  &kp UNDERSCORE  &kp RA(QUESTION)  &kp RA(TILDE)
+&kp PERCENT        &kp RA(LESS_THAN)     &kp RA(LEFT_BRACE)   &kp RA(LEFT_BRACKET)   &kp LPAR  &kp RA(N4)  &kp RA(SINGLE_QUOTE)   &kp LSHFT      &kp LCTRL          &kp LALT        &kp LGUI          &kp RA(N7)
+&kp RA(N6)         &kp RA(GREATER_THAN)  &kp RA(RIGHT_BRACE)  &kp RA(RIGHT_BRACKET)  &kp RPAR  &kp RA(N2)  &kp RA(GRAVE)          &kp RA(DOT)    &kp RA(COMMA)      &kp EQUAL       &kp EXCL          &kp RA(PIPE)
+                                                              &trans                 &trans    &trans      &trans                 &trans         &trans
+            >;
+        };
+
+        FUNC {
+            bindings = <
+&none  &kp F1  &kp F2   &kp F3   &kp F4   &kp LC(EQUAL)  &kp C_BRI_UP  &none         &none         &none          &none      &kp LA(F4)
+&none  &kp F5  &kp F6   &kp F7   &kp F8   &kp LC(MINUS)  &kp C_BRI_DN  &kp LSHFT     &kp LCTRL     &kp LALT       &kp LGUI   &none
+&none  &kp F9  &kp F10  &kp F11  &kp F12  &kp LC(N0)     &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp LG(LS(S))  &kp PSCRN  &none
+                        &trans   &trans   &trans         &trans        &trans        &trans
+            >;
+        };
+
+        MOUSE {
+            bindings = <
+&trans  &none     &none     &hscroll_mouse_mode  &vscroll_mouse_mode  &none   &none      &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &msc SCRL_UP    &none
+&none   &kp LGUI  &kp LALT  &kp LCTRL            &kp LSHFT            &none   &none      &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_DOWN  &none
+&none   &none     &none     &slow_mouse_mode     &fast_mouse_mode     &none   &none      &none           &none           &none            &none           &none
+                            &trans               &trans               &trans  &mkp LCLK  &mkp RCLK       &mkp MCLK
+            >;
+        };
+
+        BT {
+            bindings = <
+&bootloader  &none         &none         &out OUT_USB  &out OUT_BLE  &none         &none         &out OUT_BLE  &out OUT_USB  &none         &none         &bootloader
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
+&sys_reset   &none         &none         &none         &none         &none         &none         &none         &none         &none         &none         &sys_reset
+                                         &trans        &trans        &trans        &trans        &trans        &trans
+            >;
+        };
+    };
+};

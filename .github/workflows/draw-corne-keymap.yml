@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "config/*.keymap"
+      - "config/corne.keymap"
       - "config/*.dtsi"
       - "config/**/*.dtsi"
       - "keymap-drawer/config.yaml"
