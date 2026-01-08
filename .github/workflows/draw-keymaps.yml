@@ -20,6 +20,6 @@ jobs:
       config_path: "keymap-drawer/config.yaml"
       output_folder: "keymap-drawer"
       # Nicely rotated Corne thumb keys
-      draw_args: "corne:'-k corne_rotated'"
+      draw_args: "corne:'-j keymap-drawer/info.json'"
       # Fetch extra west modules (e.g. zmk-tri-state) before parsing
       west_config_path: "config"
