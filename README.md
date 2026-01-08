@@ -1,10 +1,22 @@
 # ZMK Firmware for Corne
 
-This is a repository for a ZMK Firmware for Corne keyboard.
+This is a repository for a ZMK Firmware for Corne/Cornechon keyboard.
 
 ## Keymap
 
+<details>
+<summary>Cornechon</summary>
+
+![Keymap Representation](./keymap-drawer/cornechon.svg?raw=true "Keymap Representation")
+
+</details>
+
+<details>
+<summary>Corne</summary>
+
 ![Keymap Representation](./keymap-drawer/corne.svg?raw=true "Keymap Representation")
+
+</details>
 
 ## FAQ
 
