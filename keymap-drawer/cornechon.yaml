@@ -40,8 +40,8 @@ layers:
   - NUM
   - {t: ␣, s: (CA) NB}
   - NAV
-  - Shift
   - SYM
+  - Shift
   - FUNC
   COLEMAK:
   - {t: ▽, type: trans}
@@ -212,8 +212,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   FUNC:
   - ''
