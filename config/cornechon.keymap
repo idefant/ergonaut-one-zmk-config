@@ -263,7 +263,7 @@ name: name { \
 &kp ESC  &kp Q  &kp W  &kp E      &kp R       &kp T       &kp Y      &kp U      &kp I       &kp O    &kp P     &kp LBKT
 &kp TAB  &kp A  &kp S  &kp D      &kp F       &kp G       &kp H      &kp J      &kp K       &kp L    &kp SEMI  &kp SQT
 &caps    &kp Z  &kp X  &kp C      &kp V       &kp B       &kp N      &kp M      &kp COMMA   &kp DOT  &kp FSLH  &kp RBKT
-                       &mo L_NUM  &alt_space  &mo L_NAV   &kp LSHFT  &mo L_SYM  &mo L_FUNC
+                       &mo L_NUM  &alt_space  &mo L_NAV   &mo L_SYM  &kp LSHFT  &mo L_FUNC
             >;
         };
 
